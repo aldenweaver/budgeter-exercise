@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { expensesData } from './data/expensesData';
+import ExpensesDisplay from './components/ExpensesDisplay';
+
+import { Typography } from '@mui/material';
+
+import { ChakraProvider, extendTheme as chakraExtendTheme } from '@chakra-ui/react';
+import {
+  ThemeProvider as MaterialThemeProvider,
+  createTheme as muiCreateTheme,
+  THEME_ID,
+} from '@mui/material/styles';
+
+const chakraTheme = chakraExtendTheme();
+const materialTheme = muiCreateTheme();
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ChakraProvider theme={chakraTheme} resetCSS>
+        <MaterialThemeProvider theme={{ [THEME_ID]: materialTheme }}>
+            <Typography variant="h3">Budgeter App</Typography>
+
+            <ExpensesDisplay expenses={expensesData}/>
+          </MaterialThemeProvider>
+        </ChakraProvider>
     </div>
   );
 }
