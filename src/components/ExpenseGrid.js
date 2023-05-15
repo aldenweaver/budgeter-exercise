@@ -1,9 +1,11 @@
+/* eslint-disable no-lone-blocks */
 import { useState, useEffect } from "react";
-import { Container } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
-import { expensesData } from "../data/expensesData";
+import NewExpenseForm from "./crud-components/NewExpenseForm";
+//import { expensesData } from "../data/expensesData";
 
-function BudgetGrid() {
+function ExpenseGrid({ expenses, gridTitle, deleteRow }) {
     const [rows, setRowsState] = useState([]);
     const [cols, setColsState] = useState([]);
 
@@ -16,17 +18,35 @@ function BudgetGrid() {
         { field: 'tags', headerName: 'Categories', width: 100 }
     ];
 
+
+    {/* Custom column components */}
+    // https://mui.com/x/react-data-grid/editing/#full-featured-crud-component
+    // GridActionsCellItem
+
+    // Is Paid checkbox
+
+    // Text Input columns
+
+    // DatePicker Columns
+
+    // Tags Multi-Select
+
+    // Delete expense column
+    // <DeleteDialog index={index} deleteFunc={deleteRow}></DeleteDialog>
+
+ 
     useEffect(() => {
         expensesToRows();
         setColsState(columns);
     }, []); // 
     // Empty: useEffect runs once on component load
     // putting rows or cols in there wouldn't allow for setState
-
-    // Can't use push on state var
+    
     function expensesToRows() {
+        // Can't use push on state var
         const newRows = [];
-        expensesData.map((expense, index) => {
+
+        expenses.map((expense, index) => {
             newRows.push({ 
                 id: index,
                 isPaid: expense.isPaid, 
@@ -41,11 +61,19 @@ function BudgetGrid() {
         setRowsState(newRows);
     }
 
+    
     return ( 
-        <div>
-            <DataGrid rows={rows} columns={columns} />
-        </div>
+        <Container>
+            <Typography variant="h7">{gridTitle}</Typography>
+            <br/>
+
+            <DataGrid 
+                rows={rows} 
+                columns={columns} 
+                baseFormControl={NewExpenseForm}/>
+            
+        </Container>
      );
 }
 
-export default BudgetGrid;
+export default ExpenseGrid;

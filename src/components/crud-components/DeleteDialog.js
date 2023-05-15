@@ -10,7 +10,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 
 import { Delete } from '@mui/icons-material';
 
-function DeleteDialog({ index, deleteOne }) {
+function DeleteDialog({ index, deleteFunc }) {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -22,7 +22,7 @@ function DeleteDialog({ index, deleteOne }) {
   };
 
   const handleDelete = () => {
-    deleteOne(index);
+    deleteFunc(index);
     setOpen(false);
   };
 
