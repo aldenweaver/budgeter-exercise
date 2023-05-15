@@ -1,29 +1,29 @@
 export const expensesData = [
     {
       "id":"b7f136bf-2bd5-480b-9cb5-d77d33bdeb2e",
+      "isPaid":false,
       "name":"Toilettries", 
       "amount":"100", 
       "dateDue":"2023-06-28T22:27:44Z",
       "datePaid":"2023-05-15T16:50:08Z",
-      "isPaid":false, 
       "tags":["Misc Needs"]
     },
     {
       "id":"44b3b08c-0d15-4eed-a883-4d4397e5d2a2",
+      "isPaid":true, 
       "name":"Car", 
       "amount":"250", 
       "dateDue":"2023-05-04T03:40:10Z",
-      "datePaid":"2023-04-08T11:21:27Z",
-      "isPaid":true, 
+      "datePaid":"2023-04-08T11:21:27Z",   
       "tags":["Transportation"]
     },
     {
       "id":"68deac6a-b9dc-4889-8b7c-043820b5ac3f",
+      "isPaid":true, 
       "name":"Rent", 
       "amount":"500", 
       "dateDue":"2023-06-23T16:40:39Z",
       "datePaid":"2023-05-04T06:04:47Z",
-      "isPaid":true, 
       "tags":["Housing"]
     }
 ];
